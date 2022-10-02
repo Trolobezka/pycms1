@@ -620,6 +620,7 @@ class Window(QWidget):
 
         # MAIN LAYOUT
 
+        self.vbox.addWidget(QLabel("Vytvořil Richard Kokštein, 2022."))
         self.setLayout(self.vbox)
 
 
