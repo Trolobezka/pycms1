@@ -1,5 +1,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+![Screenshot](https://i.ibb.co/8PCtmH5/pycms1-screenshot-1.png)
+
 ## Basic information
 * Python: 3.10
 * Formatting: [Black](https://github.com/psf/black)
