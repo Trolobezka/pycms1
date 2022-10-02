@@ -1,0 +1,19 @@
+## Basic information
+* Python: 3.10
+* Formatting: Black
+* Type hints: Yes
+
+## Install dependencies
+[PyQt6](https://doc.qt.io/qtforpython/)
+```
+pip install --upgrade pip
+pip install PyQt6
+```
+
+## Create executable
+[PyInstaller](https://pyinstaller.org/en/stable/)
+```
+pip install --upgrade pip
+pip install pyinstaller
+pyinstaller --onefile --windowed --name cms1_u1 main.py
+```

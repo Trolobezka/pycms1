@@ -1,0 +1,149 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel} 
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{icomma}
+%\usepackage{graphicx}
+%\usepackage{float}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+% variables start
+\newcommand{\jmeno}{x} % jmeno autora
+
+\newcommand{\motorN}{x} % otacky motoru
+\newcommand{\dmin}{x} % min. prumer hridele
+\newcommand{\AxZa}{x} % axialni zajisteni
+\newcommand{\MatNa}{x} % material naboje (retezky)
+\newcommand{\MatHr}{x} % material hridele
+
+\newcommand{\tauDovHridel}{x} % dovolene napeti ve strihu hridele
+\newcommand{\Mk}{x} % Mk
+
+\newcommand{\dhr}{x} % prumer hridele pod perem
+\newcommand{\bPera}{x} % sirka pera
+\newcommand{\hPera}{x} % vyska pera
+\newcommand{\lPera}{x} % delka pera
+\newcommand{\laPera}{x} % aktivni delka pera
+
+\newcommand{\pDMin}{x} % dovoleny tlak min
+\newcommand{\pDMax}{x} % dovoleny tlak max
+\newcommand{\pD}{x} % dovoleny tlak
+\newcommand{\pSkut}{x} % skutecny tlak
+\newcommand{\otlacVysledek}{x} % vysledek otlaceni
+
+\newcommand{\tauDMin}{x} % dovolene napeti ve strihu min
+\newcommand{\tauDMax}{x} % dovolene napeti ve strihu max
+\newcommand{\tauD}{x} % dovolene napeti ve strihu
+\newcommand{\tauSkut}{x} % napeti ve strihu
+\newcommand{\strihVysledek}{x} % vysledek strihu
+
+\newcommand{\nDraz}{x} % drazkovani: pocet zubu
+\newcommand{\dDraz}{x} % drazkovani: maly prumer
+\newcommand{\DDraz}{x} % drazkovani: velky prumer
+\newcommand{\bDraz}{x} % drazkovani: sirka zubu
+\newcommand{\Adr}{x} % ucinna plocha drazkovani na 1 mm
+
+\newcommand{\lKoefMinDraz}{x} % drazkovani: koef. doporuc. delky min
+\newcommand{\lKoefMaxDraz}{x} % drazkovani: koef. doporuc. delky max
+\newcommand{\lMinDraz}{x} % drazkovani: doporuc. delka min
+\newcommand{\lMaxDraz}{x} % drazkovani: doporuc. delka max
+
+\newcommand{\lDraz}{x} % drazkovani: vybrana delka
+\newcommand{\pSkutDraz}{x} % drazkovani: skutecny tlak
+\newcommand{\drazVysledek}{x} % vysledek drazkovani
+% variables end
+
+\rfoot{\jmeno{}}
+
+\begin{document}
+\setcounter{page}{2}
+
+\tableofcontents
+\newpage
+
+\section{Zadání}
+
+\begin{itemize}
+\item Minimální průměr hřídele $d_{min} = \dmin{} \mathrm{\,mm}$
+\item Otáčky motoru $n_M = \motorN{} \mathrm{\,min}^{-1}$
+\item Dovolené napětí v krutu $\tau_D = \tauDovHridel{} \mathrm{\,MPa}$
+\item Materiál náboje: \MatNa{}
+\item Materiál hřídele: \MatHr{}
+\item Axiální zajištění: \AxZa{}
+\end{itemize}
+
+\section{Výpočet kroutícího momentu}
+
+\[ \tau = \frac{M_k}{W_k} \leq \tau_D \]
+
+\[ W_k = \frac{\pi d^3}{16} \]
+
+\[ M_{k} = \frac{\pi \cdot \tau_D \cdot d_{min}^3}{16} = \frac{\pi \cdot \tauDovHridel{} \cdot \dmin{}^3}{16} = \Mk{} \mathrm{\,Nmm} \]
+
+\section{Kontrola těsného pera}
+
+\begin{itemize}
+\item Průměr hřídele pod perem $d_h = \dhr{} \mathrm{\,mm}$
+\item Pero dle VD: \bPera{} x \hPera{} x \lPera{} ČSN 02 2562
+\item Šířka pera $b = \bPera{} \mathrm{\,mm}$
+\item Výška pera $h = \hPera{} \mathrm{\,mm}$
+\item Aktivní délka pera $l_a = l - b = \lPera{} - \bPera{} = \laPera{} \mathrm{\,mm}$
+\item Zatížení klidné, spojení nepohyblivé, povrchy netvrzené
+\item Materiál pera: 11 600
+\item Dovolený tlak $p_D = \pDMin{} \div \pDMax{} \mathrm{\,MPa}$
+\item Dovolené napětí ve smyku $\tau_D = \tauDMin{} \div \tauDMax{} \mathrm{\,MPa}$
+\end{itemize}
+
+\subsection{Kontrola na otlačení}
+
+\[ p = \frac{4 \cdot M_k}{d \cdot h \cdot l_a} \leq p_D \]
+
+\[ p = \frac{4 \cdot M_k}{d_h \cdot h \cdot l_a} = \frac{4 \cdot \Mk{}}{\dhr{} \cdot \hPera{} \cdot \laPera{}} = \pSkut{} \mathrm{\,MPa} \leq p_D = \pD{} \mathrm{\,MPa} \]
+
+\[ \Rightarrow \mathrm{\otlacVysledek{}} \]
+
+\subsection{Kontrola na střih}
+
+\[ \tau = \frac{2 \cdot M_k}{d \cdot b \cdot l} \leq \tau_D \]
+
+\[ \tau = \frac{2 \cdot M_k}{d_h \cdot b \cdot l_a} = \frac{2 \cdot \Mk{}}{\dhr{} \cdot \bPera{} \cdot \laPera{}} = \tauSkut{} \mathrm{\,MPa} \leq \tau_D  = \tauD{} \mathrm{\,MPa} \]
+
+\[ \Rightarrow \mathrm{\strihVysledek{}} \]
+
+\section{Návrh a kontrola rovnobokého drážkování}
+
+Navrhuji střední řadu rovnobokého drážkování s vnitřním středěním \nDraz{} x \dDraz{} x \DDraz{} x \bDraz{} podle normy ČSN ISO 14 (01 4942).
+\begin{itemize}
+\item Počet zubů $n = \nDraz{}$
+\item Malý průměr $d = \dDraz{} \mathrm{\,mm}$
+\item Velký průměr $D = \DDraz{} \mathrm{\,mm}$
+\item Šířka drážky $B = \bDraz{} \mathrm{\,mm}$
+\item Činná plocha na 1 mm délky $A^{'} = \Adr{} \mathrm{\,mm}^2$
+\item Zatížení klidné, spojení nepohyblivé, povrchy netvrzené
+\end{itemize}
+
+\subsection{Návrh délky}
+
+Doporučená minimální délka drážkování $l = (\lKoefMinDraz{} \div \lKoefMaxDraz{}) \cdot d$
+
+\[ l = (\lKoefMinDraz{} \div \lKoefMaxDraz{}) \cdot \dDraz{} = (\lMinDraz{} \div \lMaxDraz{}) \mathrm{\,mm} \]
+
+Volím délku $l = \lDraz{} \mathrm{\,mm}$.
+
+\subsection{Kontrola na otlačení}
+
+\[ p = \frac{4 \cdot M_k}{A^{'} \cdot l \cdot (D + d)} \leq p_D \]
+
+\[ p = \frac{4 \cdot M_k}{A^{'} \cdot l \cdot (D + d)} = \frac{4 \cdot \Mk{}}{\Adr{} \cdot \lDraz{} \cdot (\DDraz{} + \dDraz{})} = \pSkutDraz{} \mathrm{\,MPa} < p_D = \pD{} \mathrm{\,MPa} \]
+
+\[ \Rightarrow \mathrm{\drazVysledek{}} \]
+
+\end{document}
