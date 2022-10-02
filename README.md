@@ -1,7 +1,10 @@
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 ## Basic information
 * Python: 3.10
-* Formatting: Black
-* Type hints: Yes
+* Formatting: [Black](https://github.com/psf/black)
+* Type hints: [Yes](https://docs.python.org/3/library/typing.html)
+* PDF creation: [pdfLaTeX](https://tex.stackexchange.com/questions/49569)
 
 ## Install dependencies
 [PyQt6](https://doc.qt.io/qtforpython/)
