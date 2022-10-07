@@ -1,3 +1,5 @@
+# PyČMS1
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ![Screenshot](https://i.postimg.cc/HxfVMZvr/pycms1-screenshot-2.png)
@@ -29,6 +31,9 @@ pip install --upgrade pip
 pip install pyinstaller
 pyinstaller --onefile --windowed --name cms1_u1 main.py
 ```
+
+## Note about input fields
+There is no user input validation, so inserting text into numerical field can result in error.
 
 ## Note for playing with PDFs in QWebEngineView
 Correctly installing [WebEngine](https://riverbankcomputing.com/software/pyqtwebengine/download) for PyQt6 can be challenging. If you have problems, try the following:
