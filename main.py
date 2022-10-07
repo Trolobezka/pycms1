@@ -496,7 +496,7 @@ class Window(QWidget):
         if result[0]:
             msg.setWindowTitle("Informace")
             msg.setIcon(QMessageBox.Icon.Information)
-            msg.setText("Tvorba .tex souboru proběhla úspěšně.")
+            msg.setText("Soubor .tex vytvořen ve složce ./out.")
         else:
             msg.setWindowTitle("Upozornění")
             msg.setIcon(QMessageBox.Icon.Warning)
@@ -508,43 +508,39 @@ class Window(QWidget):
         print(f"MessageBox return value: {retval}")
 
     def run_pdflatex(self) -> None:
-
         if isdir("./out") and isfile("./out/u1.tex"):
-            # import subprocess
-
             print("Running pdflatex:")
-            popen1 = Popen(
-                "pdflatex -output-directory=out .\\out\\u1.tex", shell=True
-            )  # , stdout=subprocess.PIPE
+            popen1 = Popen("pdflatex -output-directory=out .\\out\\u1.tex", shell=True)
             popen1.wait()
-            popen2 = Popen(
-                "pdflatex -output-directory=out .\\out\\u1.tex", shell=True
-            )  # , stdout=subprocess.PIPE
+            popen2 = Popen("pdflatex -output-directory=out .\\out\\u1.tex", shell=True)
             popen2.wait()
             retval1 = popen1.returncode
             retval2 = popen2.returncode
             print(retval1, retval2)
             print("Opening pdf:")
-            popen3 = Popen("start ./out/u1.pdf", shell=True)  # , stdout=subprocess.PIPE
+            popen3 = Popen("start ./out/u1.pdf", shell=True)
             popen3.wait()
             retval3 = popen3.returncode
             print(retval3)
 
-            # detailed_msg: str = ""
-            # try:
-            #     detailed_msg += popen1.stdout.read().decode("utf-8") + "\n\n\n"
-            #     detailed_msg += popen2.stdout.read().decode("utf-8") + "\n\n\n"
-            #     detailed_msg += popen3.stdout.read().decode("utf-8")
-            # except:
-            #     print("Could not read Popen.stdout.")
+            msg_text: str = ""
+            if retval1 == 0 and retval2 == 0 and retval3 == 0:
+                msg_text = "Soubor .pdf vytvořen ve složce ./out."
+            else:
+                msg_text = (
+                    "Myslím si, že někde došlo k chybě. "
+                    "Pokud soubor .pdf není vytvořen ve složce ./out, zkontrolujte, "
+                    "že máte nainstalovaný pdfLaTeX (a cestu k němu přidanou do proměnné prostředí PATH). "
+                    "Můžete také zkusit zkompilovat soubor .tex pomocí Vámi zvoleného TeX 'endžinu' (LaTeX, XeLaTeX, LuaLaTeX/LuaTeX)."
+                )
 
             msg = QMessageBox()
             msg.setWindowTitle("Informace")
             msg.setIcon(QMessageBox.Icon.Information)
-            msg.setText(
-                f"Soubor .tex vytvořen.\nretval1 = {retval1}\nretval2 = {retval2}\nretval3 = {retval3}"
+            msg.setText(msg_text)
+            msg.setDetailedText(
+                f"retval1 = {retval1}\nretval2 = {retval2}\nretval3 = {retval3}"
             )
-            # msg.setDetailedText(detailed_msg)
             msg.setStandardButtons(QMessageBox.StandardButton.Ok)
             msg.exec()
         else:
@@ -567,10 +563,10 @@ class Window(QWidget):
         self.font_button_container = QWidget()
         self.font_button_container.setLayout(QHBoxLayout())
 
-        btn = QPushButton("+")
+        btn = QPushButton("Zoom +")
         btn.clicked.connect(self.font_plus)
         self.font_button_container.layout().addWidget(btn)
-        btn = QPushButton("-")
+        btn = QPushButton("Zoom -")
         btn.clicked.connect(self.font_minus)
         self.font_button_container.layout().addWidget(btn)
 
@@ -604,15 +600,15 @@ class Window(QWidget):
         self.calculate_button_container = QWidget()
         self.calculate_button_container.setLayout(QHBoxLayout())
 
-        btn = QPushButton("Vypočítej")
+        btn = QPushButton("(1) Vypočítej")
         btn.clicked.connect(self.calculate)
         self.calculate_button_container.layout().addWidget(btn)
 
-        btn = QPushButton("Vytvoř .tex soubor")
+        btn = QPushButton("(2) Vytvoř .tex soubor")
         btn.clicked.connect(self.create_tex_file)
         self.calculate_button_container.layout().addWidget(btn)
 
-        btn = QPushButton("pdfLaTeX")
+        btn = QPushButton("(3) pdfLaTeX")
         btn.clicked.connect(self.run_pdflatex)
         self.calculate_button_container.layout().addWidget(btn)
 
