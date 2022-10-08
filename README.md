@@ -2,7 +2,7 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-![Screenshot](https://i.postimg.cc/HxfVMZvr/pycms1-screenshot-2.png)
+![Screenshot](https://i.postimg.cc/3RVr2qxs/pycms1-screenshot-3.png)
 
 ## Basic information
 * Python: 3.10
