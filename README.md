@@ -4,6 +4,8 @@
 
 ![Screenshot](https://i.postimg.cc/3RVr2qxs/pycms1-screenshot-3.png)
 
+[Video showcasing older version of the program.](https://drive.google.com/file/d/1LedgCMcjE8zndWmCLM0t9yWBso8Vbrq2/view?usp=sharing)
+
 ## Basic information
 * Python: 3.10
 * Formatting: [Black](https://github.com/psf/black)
